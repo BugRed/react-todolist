@@ -1,0 +1,42 @@
+.header {
+    background: var(--grey-700);
+    height: 12.5rem;
+    width: 85rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bold;
+    font-size: 16px;
+
+    line-height: 140%;
+}
+
+.title{
+    width:100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.to {
+    color: var(--blue-light);
+    width: 2.87rem;
+    height: 1.5rem;
+    font-weight: 900;
+}
+
+.do {
+    color: var(--purple-dark);
+    width: 2.87rem;
+    height: 1.5rem;
+    font-weight: 900;
+}
+
+.rocket{
+    width: 1.37rem;
+    height: 1.9rem;
+    margin-right: 8px;
+}

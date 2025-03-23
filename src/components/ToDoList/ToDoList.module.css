@@ -1,0 +1,94 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.links {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 80px 0 24px 0;
+}
+
+.linksTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.linksTaskTitle {
+    color: var(--grey-200);
+    background: var(--grey-400);
+    border-radius: 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 2px 10px;
+
+    font-weight: bold;
+    gap: 5px;
+}
+
+.linksCreateTask {
+  color: var(--blue-light);
+  font-weight: bold;
+  gap: 5px;
+}
+
+/* .linksCreateTask::after {
+    content: "0";
+    background: var(--grey-400);
+    border-radius: 40%;
+    padding: 0 7px;
+
+
+    color: var(--grey-200);
+
+} */
+
+.linksCompletedTask {
+  color: var(--purple-light);
+  font-weight: bold;
+
+  gap: 5px;
+}
+
+/* .linksCompletedTask::before {
+    content: "0";
+    background: var(--grey-400);
+    border-radius: 40%;
+    padding: 0 7px;
+    
+
+
+    color: var(--grey-200);
+
+} */
+
+.divEmpty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  line-height: 140%;
+}
+
+.imgEmpty {
+  width: 56px;
+  height: 56px;
+
+  margin-bottom: 16px;
+}
