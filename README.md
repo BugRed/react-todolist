@@ -11,6 +11,7 @@ Este projeto é uma aplicação simples de lista de tarefas (To-Do List) desenvo
 ✅ Remover uma tarefa  
 ✅ Contabilizar o número total de tarefas criadas  
 ✅ Contabilizar o número de tarefas concluídas  
+✅ Usa localStorage para persistencia de dados
 
 ---
 
@@ -75,7 +76,6 @@ Agora, acesse o projeto no navegador em: **http://localhost:5173/** (ou a porta 
 ---
 
 ## 📌 Melhorias Futuras
-🔹 Salvar tarefas no **localStorage** para persistência de dados  
 🔹 Adicionar **filtros** (Todas, Concluídas, Pendentes)  
 🔹 Permitir **edição** de tarefas  
 🔹 Melhorar o **design** e responsividade 📱
