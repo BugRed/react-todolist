@@ -3,7 +3,7 @@ import { Task } from "../Task/Task";
 import styles from "./ToDoList.module.css";
 
 import clipboard from "../../assets/Clipboard.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Task {
   id: number;
@@ -12,27 +12,43 @@ interface Task {
 }
 
 export function ToDoList() {
+  // Carregar tarefas do localStorage, se existirem
+  const loadTasksFromStorage = () => {
+    const storedTasks = localStorage.getItem("taskList");
+    return storedTasks ? JSON.parse(storedTasks) : [];
+  };
+
   const [taskList, setTaskList] = useState<Task[]>([]);
+
+  // Carregar as tarefas do localStorage assim que o componente for montado
+  useEffect(() => {
+    const tasksFromStorage = loadTasksFromStorage();
+    setTaskList(tasksFromStorage);
+  }, []);
+
   const [createdTask, setCreatedTask] = useState<number>(0);
   const [completedTask, setCompletedTask] = useState<number>(0);
 
   // Atualiza os contadores de tarefas criadas/concluídas
-  function updateCreatedAndCompletedTask(createdIncrement: number, completedIncrement: number) {
-    setCreatedTask((prev) => prev + createdIncrement);
-    setCompletedTask((prev) => prev + completedIncrement);
-  }
+  useEffect(() => {
+    setCreatedTask(taskList.length);
+    setCompletedTask(taskList.filter((task) => task.isCompleted).length);
+  }, [taskList]); // Quando taskList mudar, atualiza os contadores
+
+  // Salva a lista de tarefas no localStorage
+  useEffect(() => {
+    if (taskList.length > 0) {
+      localStorage.setItem("taskList", JSON.stringify(taskList));
+    }
+  }, [taskList]); // Sempre que taskList mudar, salva no localStorage
 
   // Remove uma tarefa e atualiza a contagem corretamente
   function deleteTask(taskToDelete: number) {
-    setTaskList((prevTasks) => prevTasks.filter((t) => t.id !== taskToDelete));
+    const updatedTaskList = taskList.filter((t) => t.id !== taskToDelete);
+    setTaskList(updatedTaskList);
 
-    setCreatedTask((prev) => Math.max(prev - 1, 0));
-
-    // Se a tarefa removida estava concluída, reduzir a contagem de concluídas
-    setCompletedTask((prev) => {
-      const wasCompleted = taskList.find((task) => task.id === taskToDelete)?.isCompleted;
-      return wasCompleted ? Math.max(prev - 1, 0) : prev;
-    });
+    // Após a remoção da tarefa, também atualiza o localStorage
+    localStorage.setItem("taskList", JSON.stringify(updatedTaskList));
   }
 
   // Adiciona uma nova tarefa
@@ -42,22 +58,16 @@ export function ToDoList() {
       content: content,
       isCompleted: false, // Inicialmente não concluída
     };
-    setTaskList((prevTasks) => [...prevTasks, newTask]);
-    updateCreatedAndCompletedTask(1, 0);
+    const updatedTaskList = [...taskList, newTask];
+    setTaskList(updatedTaskList);
   }
 
   // Alterna o status de uma tarefa concluída
   function toggleTaskCompletion(taskId: number) {
-    setTaskList((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === taskId ? { ...task, isCompleted: !task.isCompleted } : task
-      )
+    const updatedTaskList = taskList.map((task) =>
+      task.id === taskId ? { ...task, isCompleted: !task.isCompleted } : task
     );
-
-    setCompletedTask((prev) => {
-      const task = taskList.find((t) => t.id === taskId);
-      return task && !task.isCompleted ? prev + 1 : Math.max(prev - 1, 0);
-    });
+    setTaskList(updatedTaskList);
   }
 
   return (

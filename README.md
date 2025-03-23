@@ -1,54 +1,87 @@
-# React + TypeScript + Vite
+# 📝 To-Do List
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto é uma aplicação simples de lista de tarefas (To-Do List) desenvolvida em **React + TypeScript**. O objetivo é permitir que o usuário adicione, conclua e remova tarefas, mantendo um controle sobre quantas tarefas foram criadas e quantas foram concluídas.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Funcionalidades
 
-## Expanding the ESLint configuration
+✅ Adicionar uma nova tarefa à lista  
+✅ Marcar uma tarefa como **concluída**  
+✅ Remover uma tarefa  
+✅ Contabilizar o número total de tarefas criadas  
+✅ Contabilizar o número de tarefas concluídas  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🛠️ Tecnologias Utilizadas
+
+- **React.js** ⚛️
+- **TypeScript** 🟦
+- **CSS Modules** 🎨
+- **Phosphor Icons** 🔥
+
+---
+
+## 📦 Instalação e Execução
+
+### 1️⃣ Clone o repositório:
+```bash
+git clone git@github.com:BugRed/react-todolist.git
+cd react-todolist
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### 2️⃣ Instale as dependências:
+```bash
+npm install
+# ou
+yarn install
 ```
+
+### 3️⃣ Execute o projeto:
+```bash
+npm run dev
+# ou
+yarn dev
+```
+
+Agora, acesse o projeto no navegador em: **http://localhost:5173/** (ou a porta que o Vite indicar).  
+
+---
+
+## 📂 Estrutura do Projeto
+
+```
+📁 src
+ ├── 📁 assets         # Imagens e ícones
+ ├── 📁 components     # Componentes do projeto
+ │   ├── 📄 Input.tsx  # Componente de entrada de tarefas
+ │   ├── 📄 Task.tsx   # Componente de cada tarefa individual
+ │   ├── 📄 ToDoList.tsx # Componente principal
+ ├── 📁 styles         # Estilos (CSS Modules)
+ ├── 📄 App.tsx        # Componente principal do React
+ ├── 📄 main.tsx       # Ponto de entrada do React
+ ├── 📄 index.html     # HTML principal
+```
+
+---
+
+## ✨ Como Usar
+1️⃣ Digite o nome da tarefa no campo de entrada e clique em "Criar +".  
+2️⃣ Para marcar uma tarefa como concluída, clique na caixa de seleção (checkbox).  
+3️⃣ Para excluir uma tarefa, clique no ícone de **lixeira**.  
+4️⃣ O contador de tarefas será atualizado automaticamente.
+
+---
+
+## 📌 Melhorias Futuras
+🔹 Salvar tarefas no **localStorage** para persistência de dados  
+🔹 Adicionar **filtros** (Todas, Concluídas, Pendentes)  
+🔹 Permitir **edição** de tarefas  
+🔹 Melhorar o **design** e responsividade 📱
+
+---
+
+## 👨‍💻 Autor
+Desenvolvido por **[BugRed](https://github.com/BugRed)** 🚀
+
